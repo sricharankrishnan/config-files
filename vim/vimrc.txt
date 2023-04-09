@@ -1,0 +1,94 @@
+  set showmatch " show matching brackets
+  set mat=5 " how many tenths of a second to blink matching brackets for
+  set nu
+  set cursorline
+  set hlsearch
+  set incsearch
+  hi CursorLine   cterm=NONE ctermbg=16 ctermfg=NONE guibg=darkred guifg=white
+  set ai " autoindent
+  set si " smartindent
+  set cindent " do c-style indenting
+  set tabstop=2 " tab spacing (settings below are just to unify it)
+  set softtabstop=2 " unify
+  set shiftwidth=2 " unify
+  set expandtab " real tabs please!
+  set nowrap " do not wrap lines
+  set smarttab " use tabs at the start of a line, spaces elsewhere
+  set foldmethod=indent
+  set foldlevel=0
+  set textwidth=100
+  set wildmenu
+
+  ab #b /***************************************************************************
+  ab #e ***************************************************************************/
+
+  "Keyboard mappings
+  map k gk
+  map j gj
+  "inoremap <expr> <C-n> pumvisible() ? '<C-n>' :'<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+  "inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+  autocmd FileType python set omnifunc=pythoncomplete#Complete
+  autocmd FileType python set noexpandtab
+  autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+  autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+  "autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+  autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+  "autocmd FileType c set omnifunc=ccomplete#Complete
+  "au BufNewFile, BufRead *.less set filetype=less
+"
+"  call pathogen#infect()
+"
+"    let g:rbpt_colorpairs = [
+"    \ ['brown',       'RoyalBlue3'],
+"    \ ['Darkblue',    'SeaGreen3'],
+"    \ ['darkgray',    'DarkOrchid3'],
+"    \ ['darkgreen',   'firebrick3'],
+"    \ ['darkcyan',    'RoyalBlue3'],
+"    \ ['darkred',     'SeaGreen3'],
+"    \ ['darkmagenta', 'DarkOrchid3'],
+"    \ ['brown',       'firebrick3'],
+"    \ ['gray',        'RoyalBlue3'],
+"    \ ['black',       'SeaGreen3'],
+"    \ ['darkmagenta', 'DarkOrchid3'],
+"    \ ['Darkblue',    'firebrick3'],
+"    \ ['darkgreen',   'RoyalBlue3'],
+"    \ ['darkcyan',    'SeaGreen3'],
+"    \ ['darkred',     'DarkOrchid3'],
+"    \ ['red',         'firebrick3'],
+"    \ ]
+"
+"  au FileType javascript RainbowParenthesesToggle       " Toggle it on/off
+"  au Syntax * RainbowParenthesesLoadRound    " (), the default when toggling
+"  au Syntax * RainbowParenthesesLoadSquare   " []
+"  au Syntax * RainbowParenthesesLoadBraces   " {}
+"  au Syntax * RainbowParenthesesLoadChevrons " <>
+
+  au BufNewFile,BufRead *.handlebars set filetype=html
+  syntax on " syntax highlighting on
+
+  " -------------------------------------------------------------------------------------------
+  " Keep the below configurations. To install vim-prettier, run the following terminal command:
+  " curl -sS https://webinstall.dev/vim-prettier | sudo bash
+  " Then take a sample file and work with it to see if things are ok!
+  " -------------------------------------------------------------------------------------------
+  " format as-you-type is quite annoying, so we turn it off
+  let g:prettier#autoformat = 0
+
+  " we also want to get rid of accidental trailing whitespace on save
+  autocmd BufWritePre * :%s/\s\+$//e
+
+  " don't check syntax immediately on open or on quit
+  let g:syntastic_check_on_open = 1
+  let g:syntastic_check_on_wq = 0
+  let g:typescript_indent_disable = 1
+  autocmd QuickFixCmdPost [^l]* nested cwindow
+  autocmd QuickFixCmdPost    l* nested lwindow
+
+  " list all of the extensions for which prettier should run
+  " autocmd BufWinLeave .babelrc,.eslintrc,.jshintrc,*.java,*.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+
+  " color scheme for vim https://raw.githubusercontent.com/patstockwell/vim-monokai-tasty/master/colors/vim-monokai-tasty.vim
+  syntax on
+
