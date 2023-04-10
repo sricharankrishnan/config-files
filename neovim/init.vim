@@ -1,10 +1,13 @@
 :set number
 :set autoindent
 :set tabstop=2
-:set shiftwidth=4
-:set smarttab
+:set shiftwidth=2
 :set softtabstop=2
+:set smarttab
 :set mouse=c
+:set foldmethod=indent
+:set foldlevel=0
+:set textwidth=100
 
 call plug#begin('~/.config/nvim/plugged')
 	Plug 'http://github.com/tpope/vim-surround' " Surrounding ysw)
@@ -31,9 +34,9 @@ let g:coc_global_extensions = [
   \ 'coc-snippets',
   \ 'coc-pairs',
   \ 'coc-tsserver',
-  \ 'coc-eslint', 
-  \ 'coc-prettier', 
-  \ 'coc-json', 
+  \ 'coc-eslint',
+  \ 'coc-prettier',
+  \ 'coc-json',
   \ ]
 " from readme
 " if hidden is not set, TextEdit might fail.
